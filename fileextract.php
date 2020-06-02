@@ -163,9 +163,20 @@ function pptx_to_text($input_file){
     }
 
 }
+
+if(isset($_POST['submit'])){
+ 
+    // Count total files
+    $countfiles = count($_FILES['fileToUpload']['name']); 
+    // Looping all files
+     $filename = $_FILES['fileToUpload']['name'];
+     // Upload file
+     move_uploaded_file($_FILES['file']['tmp_name'],'./'.$filename);
+
 $docObj = new DocxConversion("ramuexpresume.docx");
 //$docObj = new DocxConversion("test.docx");
 //$docObj = new DocxConversion("test.xlsx");
 //$docObj = new DocxConversion("test.pptx");
 echo $docText= $docObj->convertToText();
+    }
 ?>
